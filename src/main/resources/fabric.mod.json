@@ -3,14 +3,19 @@
   "id": "modid",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "MnM",
+  "description": "Mineshafts and Mobs",
   "authors": [
-    "Me!"
+    "BatmenzDW",
+    "SkyKlokwork",
+    "leilagarciap",
+    "nathandurham1",
+    "dustinthat1homosapienaversman",
+    "znmalomboza01"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "",
+    "sources": "https://github.com/SkyKlokwork/Mineshafts-and-Mobs"
   },
 
   "license": "CC0-1.0",
@@ -19,7 +24,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "net.fabricmc.mnm.MnM"
     ]
   },
   "mixins": [
