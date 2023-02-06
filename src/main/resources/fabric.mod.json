@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "mnm",
   "version": "${version}",
 
   "name": "MnM",
@@ -24,11 +24,14 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.mnm.MnM"
+      "net.mineshafts.mnm.MnM"
+    ],
+    "client": [
+      "net.mineshafts.mnm.MnMClient"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "mnm.mixins.json"
   ],
 
   "depends": {

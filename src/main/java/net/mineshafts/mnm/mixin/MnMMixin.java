@@ -1,6 +1,5 @@
-package net.fabricmc.mnm.mixin;
+package net.mineshafts.mnm.mixin;
 
-import net.fabricmc.mnm.MnM;
 import net.minecraft.client.gui.screen.TitleScreen;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
