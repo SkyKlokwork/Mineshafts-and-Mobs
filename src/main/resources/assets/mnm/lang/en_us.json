@@ -1,3 +1,5 @@
 {
-  "item.mnm.gold_coin": "Gold Coin"
+  "item.mnm.gold_coin": "Gold Coin",
+
+  "block.mnm.gold_coin_pile": "Pile of Gold Coins"
 }

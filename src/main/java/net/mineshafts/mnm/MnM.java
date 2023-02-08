@@ -1,6 +1,7 @@
 package net.mineshafts.mnm;
 
 import net.fabricmc.api.ModInitializer;
+import net.mineshafts.mnm.block.ModBlocks;
 import net.mineshafts.mnm.item.ModItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,14 +14,10 @@ public class MnM implements ModInitializer {
 	public static final String ModId = "mnm";
 	public static final Logger LOGGER = LoggerFactory.getLogger(ModId);
 
-	// an instance of our new item
-    public static final Item GOLD_COIN =
-      Registry.register(Registries.ITEM, new Identifier("tutorial", "gold_coin"),
-        new Item(new FabricItemSettings()));
-
 	@Override
 	public void onInitialize() {
 		ModItems.registerModItems();
+		ModBlocks.registerModBlocks();
 	}
 }
 
