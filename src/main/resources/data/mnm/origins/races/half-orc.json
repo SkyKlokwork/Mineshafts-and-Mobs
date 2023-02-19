@@ -1,0 +1,10 @@
+{
+  "powers": [
+    "mnm:darkvision"
+  ],
+  "icon": "minecraft:wooden_shovel",
+  "order": 7,
+  "impact": 0,
+  "name": "Half-Orc",
+  "description": "TODO: fill this description in"
+}

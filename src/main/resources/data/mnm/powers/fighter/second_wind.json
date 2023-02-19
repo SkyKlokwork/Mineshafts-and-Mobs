@@ -1,0 +1,24 @@
+{
+  "type": "origins:active_self",
+  "entity_action": {
+        "type": "origins:apply_effect",
+        "effect": {
+          "effect": "minecraft:instant_health",
+          "duration": 1,
+          "amplifier": 5,
+          "is_ambient": false,
+          "show_particles": false,
+          "show_icon": false
+        }
+  },
+  "cooldown": 100,
+  "hud_render": {
+    "should_render": false
+  },
+  "key": {
+    "key": "key.origins.primary_active",
+    "continuous": true
+  },
+  "name": "Second Wind",
+  "description": "TODO"
+}

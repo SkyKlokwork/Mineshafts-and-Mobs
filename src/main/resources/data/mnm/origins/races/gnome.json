@@ -1,0 +1,11 @@
+{
+  "powers": [
+    "mnm:darkvision",
+    "mnm:speed/dwarf_speed"
+  ],
+  "icon": "minecraft:arrow",
+  "order": 5,
+  "impact": 0,
+  "name": "Gnome",
+  "description": "TODO: fill this description in"
+}

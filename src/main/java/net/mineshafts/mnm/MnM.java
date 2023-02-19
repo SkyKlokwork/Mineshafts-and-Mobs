@@ -14,6 +14,8 @@ public class MnM implements ModInitializer {
 	public static final String ModId = "mnm";
 	public static final Logger LOGGER = LoggerFactory.getLogger(ModId);
 
+
+
 	@Override
 	public void onInitialize() {
 		ModItems.registerModItems();

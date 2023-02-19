@@ -1,0 +1,12 @@
+{
+  "order": 1,
+  "enabled": true,
+  "origins": [
+    "mnm:class/fighter",
+    "mnm:class/barbarian",
+    "mnm:class/bard"
+  ],
+  "name": "Class",
+  "missing_name": "None",
+  "missing_description": "You currently don't have a class selected."
+}

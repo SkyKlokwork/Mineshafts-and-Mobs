@@ -1,0 +1,10 @@
+{
+  "name": "Speed",
+  "type": "origins:attribute",
+  "modifier": {
+    "attribute": "generic.movement_speed",
+    "operation": "multiply_base",
+    "value": 0.8
+  },
+  "update_health": true
+}

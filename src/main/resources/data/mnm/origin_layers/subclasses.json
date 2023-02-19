@@ -1,0 +1,10 @@
+{
+  "order": 4,
+  "enabled": true,
+  "origins": [
+
+  ],
+  "name": "Sub-Class",
+  "missing_name": "None",
+  "missing_description": "You currently don't have a sub-class selected."
+}

@@ -1,0 +1,11 @@
+{
+  "powers": [
+    "mnm:darkvision",
+    "mnm:speed/dwarf_speed"
+  ],
+  "icon": "minecraft:iron_pickaxe",
+  "order": 0,
+  "impact": 1,
+  "name": "Dwarf",
+  "description": "TODO: fill this description in"
+}

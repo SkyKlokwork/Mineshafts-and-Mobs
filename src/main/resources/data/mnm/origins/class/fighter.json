@@ -1,0 +1,10 @@
+{
+  "powers": [
+      "mnm:fighter/second_wind"
+  ],
+  "icon": "minecraft:iron_sword",
+  "order": 4,
+  "impact": 1,
+  "name": "Fighter",
+  "description": "TODO: fill this description in"
+}

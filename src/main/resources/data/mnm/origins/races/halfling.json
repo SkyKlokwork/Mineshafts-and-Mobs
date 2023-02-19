@@ -1,0 +1,10 @@
+{
+  "powers": [
+    "mnm:speed/dwarf_speed"
+  ],
+  "icon": "minecraft:stick",
+  "order": 2,
+  "impact": 1,
+  "name": "Halfling",
+  "description": "TODO: fill this description in"
+}
