@@ -2,9 +2,9 @@
   "powers": [
 
   ],
-  "icon": "minecraft:gold_block",
-  "order": 5,
+  "icon": "minecraft:copper_block",
+  "order": 3,
   "impact": 0,
-  "name": "Gold Dragonbron",
+  "name": "Bronze Dragonborn",
   "description": "TODO: fill this description in"
 }

@@ -2,9 +2,9 @@
   "powers": [
 
   ],
-  "icon": "minecraft:copper_block",
-  "order": 3,
+  "icon": "minecraft:lime_wool",
+  "order": 6,
   "impact": 0,
-  "name": "Bronze Dragonbron",
+  "name": "Green Dragonborn",
   "description": "TODO: fill this description in"
 }

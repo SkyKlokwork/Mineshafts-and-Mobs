@@ -2,9 +2,9 @@
   "powers": [
 
   ],
-  "icon": "minecraft:gold_block",
-  "order": 2,
+  "icon": "minecraft:copper_block",
+  "order": 4,
   "impact": 0,
-  "name": "Brass Dragonbron",
+  "name": "Copper Dragonborn",
   "description": "TODO: fill this description in"
 }

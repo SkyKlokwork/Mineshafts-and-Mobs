@@ -17,7 +17,6 @@ public class ModItems {
     public static final Item D20 = registerItem("d20",
             new DiceItem(new Item.Settings().maxCount(1), 20),ModItemGroup.Mineshafts);
 
-
     private static Item registerItem(String name, Item item, ItemGroup group) {
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(item));
         return Registry.register(Registries.ITEM, new Identifier(MnM.ModId, name), item);
