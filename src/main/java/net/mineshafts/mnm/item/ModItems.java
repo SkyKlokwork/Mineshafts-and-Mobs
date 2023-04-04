@@ -8,15 +8,18 @@ import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import net.mineshafts.mnm.MnM;
 import net.minecraft.registry.Registry;
+import net.mineshafts.mnm.event.KeyInputHandler;
 import net.mineshafts.mnm.item.custom.DiceItem;
+import net.mineshafts.mnm.item.custom.StaffItem;
 
 public class ModItems {
 
     public static final Item GOLD_COIN = registerItem("gold_coin",
             new Item(new Item.Settings()), ModItemGroup.Mineshafts);
     public static final Item D20 = registerItem("d20",
-            new DiceItem(new Item.Settings().maxCount(1), 20),ModItemGroup.Mineshafts);
-
+            new DiceItem(new Item.Settings().maxCount(5), 20),ModItemGroup.Mineshafts);
+    public static final Item STAFF_ITEM = registerItem("staff_item",
+            new StaffItem(new Item.Settings()), ModItemGroup.Mineshafts);
 
     private static Item registerItem(String name, Item item, ItemGroup group) {
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(item));

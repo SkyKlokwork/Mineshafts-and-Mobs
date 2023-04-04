@@ -1,6 +1,10 @@
 {
   "item.mnm.gold_coin": "Gold Coin",
   "item.mnm.d20": "D20",
+  "item.mnm.staff_item": "Test Staff",
 
-  "block.mnm.gold_coin_pile": "Pile of Gold Coins"
+  "block.mnm.gold_coin_pile": "Pile of Gold Coins",
+  "key.category.mineshafts.keybindings" : "Spells Keybinds",
+  "key.mineshafts.prev_spell" : "Previous Spell",
+  "key.mineshafts.next_spell" : "Next Spell"
 }
