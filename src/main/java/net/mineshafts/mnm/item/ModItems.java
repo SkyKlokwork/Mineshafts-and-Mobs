@@ -1,6 +1,5 @@
 package net.mineshafts.mnm.item;
 
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -8,7 +7,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import net.mineshafts.mnm.MnM;
 import net.minecraft.registry.Registry;
-import net.mineshafts.mnm.event.KeyInputHandler;
 import net.mineshafts.mnm.item.custom.DiceItem;
 import net.mineshafts.mnm.item.custom.StaffItem;
 

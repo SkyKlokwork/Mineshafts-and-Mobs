@@ -1,25 +1,18 @@
 package net.mineshafts.mnm.item.custom;
 
-import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.ArrowEntity;
+
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ArrowItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.registry.Registries;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
-import net.mineshafts.mnm.event.KeyInputHandler;
-import org.spongepowered.asm.mixin.Mixin;
-
-import java.rmi.registry.Registry;
 
 public class StaffItem extends Item {
     public StaffItem(Settings settings){super(settings);}
@@ -51,7 +44,7 @@ public class StaffItem extends Item {
 
                 }
             case 7:
-                world.playSound((PlayerEntity) null, user.getX(), user.getY(), user.getZ(), SoundEvents.BLOCK_ANVIL_HIT, SoundCategory.MASTER, 1, 1);
+                world.playSound( null, user.getX(), user.getY(), user.getZ(), SoundEvents.BLOCK_ANVIL_HIT, SoundCategory.MASTER, 1, 1);
                 break;
             default:
                 break;
