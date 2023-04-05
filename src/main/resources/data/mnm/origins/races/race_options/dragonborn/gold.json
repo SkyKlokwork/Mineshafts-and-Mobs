@@ -2,9 +2,9 @@
   "powers": [
 
   ],
-  "icon": "minecraft:red_wool",
-  "order": 7,
+  "icon": "minecraft:gold_block",
+  "order": 5,
   "impact": 0,
-  "name": "Red Dragonbron",
+  "name": "Gold Dragonborn",
   "description": "TODO: fill this description in"
 }

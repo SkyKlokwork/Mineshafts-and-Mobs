@@ -4,6 +4,7 @@
   "package": "net.mineshafts.mnm.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "MnMEntityDataSaverMixin"
   ],
   "client": [
     "MnMMixin"

@@ -2,9 +2,9 @@
   "powers": [
 
   ],
-  "icon": "minecraft:wool",
-  "order": 9,
+  "icon": "minecraft:gold_block",
+  "order": 2,
   "impact": 0,
-  "name": "White Dragonbron",
+  "name": "Brass Dragonborn",
   "description": "TODO: fill this description in"
 }

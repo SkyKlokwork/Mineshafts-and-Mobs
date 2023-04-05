@@ -4,6 +4,7 @@
   "origins": [
     "mnm:races/human",
     "mnm:races/dwarf",
+    "mnm:races/dragonborn",
     "mnm:races/elf",
     "mnm:races/gnome",
     "mnm:races/half-elf",
