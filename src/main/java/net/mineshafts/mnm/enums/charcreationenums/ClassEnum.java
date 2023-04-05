@@ -12,6 +12,8 @@ import net.mineshafts.mnm.playerdata.Proficiencies;
 import java.util.Arrays;
 import java.util.function.Consumer;
 
+import static net.mineshafts.mnm.gui.CharCreationScreen.*;
+
 @Environment(value= EnvType.CLIENT)
 public enum ClassEnum implements CharacterCreationEnum {
     // id, key, hitDie, Array of proficiencies (armor, weapons, tools, saving throws, skills)<leave last n null for n choices>
@@ -147,7 +149,7 @@ public enum ClassEnum implements CharacterCreationEnum {
     public Screen manageScreen(Screen parent) {
         PlayerClass.addPlayerClass(this);
         ManageScreen manage = new ManageScreen(this,"manage",1,parent);
-        manage.setNextScreen(()->new ScoreGenSelection(manage));
+        manage.setNextScreen(()->ABILITIES);
         manage.setResultsSaver(this.resultsSaver());
         return manage;
     }

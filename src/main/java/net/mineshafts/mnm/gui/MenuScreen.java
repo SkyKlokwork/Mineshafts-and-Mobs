@@ -6,8 +6,6 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextWidget;
 import net.minecraft.text.Text;
 import net.mineshafts.mnm.enums.charcreationenums.CharStatEnum;
-import net.mineshafts.mnm.enums.charcreationenums.CharacterCreationEnum;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;

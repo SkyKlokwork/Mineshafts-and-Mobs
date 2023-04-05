@@ -15,6 +15,8 @@ import net.mineshafts.mnm.playerdata.PlayerRace;
 import java.util.Arrays;
 import java.util.function.Consumer;
 
+import static net.mineshafts.mnm.gui.CharCreationScreen.*;
+
 @Environment(value= EnvType.CLIENT)
 public enum RaceEnum implements CharacterCreationEnum {
     AARAKOCRA_LEGACY(0, "aarakocra_legacy",null,null,null,null){
@@ -141,7 +143,7 @@ public enum RaceEnum implements CharacterCreationEnum {
     public Screen manageScreen(Screen parent) {
         PlayerRace.setRace(this);
         ManageScreen manage = new ManageScreen(this,"manage",1,parent);
-        manage.setNextScreen(()->new ClassSelection(manage));
+        manage.setNextScreen(()->CLASS_SELECTION);
         manage.setResultsSaver(this.resultsSaver());
         return manage;
     }

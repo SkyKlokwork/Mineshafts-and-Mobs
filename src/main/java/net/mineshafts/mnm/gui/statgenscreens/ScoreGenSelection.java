@@ -4,16 +4,16 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.GridWidget;
 import net.minecraft.client.gui.widget.SimplePositioningWidget;
 import net.minecraft.text.Text;
-import net.mineshafts.mnm.enums.charcreationenums.ClassEnum;
 import net.mineshafts.mnm.enums.charcreationenums.GenerationType;
-import net.mineshafts.mnm.gui.MenuScreen;
+import net.mineshafts.mnm.gui.CharCreationScreen;
 
-public class ScoreGenSelection extends MenuScreen {
+public class ScoreGenSelection extends CharCreationScreen {
     public ScoreGenSelection(Screen parent) {
         super(Text.translatable("mnm.menu.raceselection"), parent);
     }
     @Override
-    protected void init() {
+    public void init() {
+        super.init();
         GridWidget gridWidget = new GridWidget();
         gridWidget.getMainPositioner().margin(4, 4, 4, 0);
         GridWidget.Adder adder = gridWidget.createAdder(1);

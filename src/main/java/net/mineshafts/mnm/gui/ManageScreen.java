@@ -46,9 +46,11 @@ public class ManageScreen extends InfoScreen{
     }
 
     @Override
-    protected void init() {
+    public void init() {
         // Debug code
         MinecraftClient.getInstance().player.sendMessage(this.title);
+
+        super.init();
 
         String[][] description = new String[1][];
         if(buttonCounts.length<20){

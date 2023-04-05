@@ -1,23 +1,18 @@
 package net.mineshafts.mnm.gui.statgenscreens;
 
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.Element;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.client.gui.widget.ButtonWidget;
-import net.minecraft.client.gui.widget.GridWidget;
 import net.minecraft.client.gui.widget.SimplePositioningWidget;
 import net.minecraft.client.gui.widget.TextWidget;
-import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.text.Text;
 import net.mineshafts.mnm.enums.charcreationenums.StatType;
-import net.mineshafts.mnm.gui.MenuScreen;
+import net.mineshafts.mnm.gui.CharCreationScreen;
 import net.mineshafts.mnm.gui.widgets.MutableGridWidget;
 
 import java.util.Arrays;
-import java.util.OptionalInt;
 
-public class StatSelectionScreen extends MenuScreen {
+public class StatSelectionScreen extends CharCreationScreen {
     protected StatSelectionScreen(Text title, Screen parent) {
         super(title, parent);
     }
@@ -39,8 +34,8 @@ public class StatSelectionScreen extends MenuScreen {
     protected void createDropdownElements(ButtonWidget dropdown, int index, MutableGridWidget gridWidget){
         int x = dropdown.getX();
         int y = dropdown.getY();
-        int width = dropdown.getWidth();
-        int height = dropdown.getHeight();
+        int w = dropdown.getWidth();
+        int h = dropdown.getHeight();
         clearDropdowns();
         dropdownElements = new ButtonWidget[standardArray.length+1];
         dropdownElements[0] = ButtonWidget.builder(Text.translatable("mnm.menu.placeholder"),button -> {
@@ -53,10 +48,10 @@ public class StatSelectionScreen extends MenuScreen {
             dropdown.setMessage(Text.translatable("mnm.menu.placeholder"));
             clearDropdowns();
             setCalculations(0, index);
-        }).dimensions(x,y+height, width, height).build();
+        }).dimensions(x,y+h, w, h).build();
         this.addDrawableChild(dropdownElements[0]);
         for (int i=1;i<standardArray.length+1;i++){
-            dropdownElements[i] = ButtonWidget.builder(Text.of(String.valueOf(standardArray[i-1])),button->setDropdownValue(dropdown,button,index,gridWidget)).dimensions(x,y+(i+1)*height, width, height).build();
+            dropdownElements[i] = ButtonWidget.builder(Text.of(String.valueOf(standardArray[i-1])),button->setDropdownValue(dropdown,button,index,gridWidget)).dimensions(x,y+(i+1)*h, w, h).build();
             this.addDrawableChild(dropdownElements[i]);
         }
     }

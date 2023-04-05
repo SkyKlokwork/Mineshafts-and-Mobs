@@ -7,7 +7,7 @@ import net.mineshafts.mnm.gui.widgets.ScrollableMenu;
 
 import java.util.Arrays;
 
-public class InfoScreen extends MenuScreen {
+public class InfoScreen extends CharCreationScreen {
     protected InfoScreen(Text title, Screen parent) {
         super(title, parent);
     }
@@ -66,7 +66,12 @@ public class InfoScreen extends MenuScreen {
         for(ClickableWidget button:buttons)
             adder.add(button);
         gridWidget.recalculateDimensions();
-        SimplePositioningWidget.setPos(gridWidget, 0, 0, this.width, this.height, 0.5f, 0.25f);
+        int y = this.children().stream().mapToInt(element->{
+            if(element instanceof ClickableWidget c)
+                return c.getY();
+            return 0;
+        }).max().getAsInt();
+        SimplePositioningWidget.setPos(gridWidget, 0, y, this.width, this.height, 0.5f, 0.25f);
         this.addDrawableChild(gridWidget);
     }
 }

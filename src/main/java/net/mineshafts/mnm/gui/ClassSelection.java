@@ -6,12 +6,13 @@ import net.minecraft.client.gui.widget.SimplePositioningWidget;
 import net.minecraft.text.Text;
 import net.mineshafts.mnm.enums.charcreationenums.ClassEnum;
 
-public class ClassSelection extends MenuScreen {
+public class ClassSelection extends CharCreationScreen {
     public ClassSelection(Screen parent) {
         super(Text.translatable("mnm.menu.raceselection"), parent);
     }
     @Override
-    protected void init() {
+    public void init() {
+        super.init();
         GridWidget gridWidget = new GridWidget();
         gridWidget.getMainPositioner().margin(4, 4, 4, 0);
         GridWidget.Adder adder = gridWidget.createAdder(1);

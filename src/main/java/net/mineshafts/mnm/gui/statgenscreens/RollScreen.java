@@ -7,10 +7,10 @@ import net.minecraft.client.gui.widget.GridWidget;
 import net.minecraft.client.gui.widget.SimplePositioningWidget;
 import net.minecraft.client.gui.widget.TextWidget;
 import net.minecraft.text.Text;
-import net.mineshafts.mnm.gui.MenuScreen;
+import net.mineshafts.mnm.gui.CharCreationScreen;
 import net.mineshafts.mnm.gui.util.Roll;
 
-public class RollScreen extends MenuScreen {
+public class RollScreen extends CharCreationScreen {
     protected int[] scores = new int[]{0,0,0,0,0,0};
     protected TextWidget[] row0 = new TextWidget[6];
     protected TextWidget[] row1 = new TextWidget[6];
