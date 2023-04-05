@@ -13,8 +13,7 @@ import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public class ManageScreen extends InfoScreen{
-    protected int level = 0;
+public class BackgroundScreen extends InfoScreen{
     protected int[][] leveledAbilities;
     protected CharacterCreationEnum name;
     protected String[] leveledDescriptions;
@@ -23,19 +22,12 @@ public class ManageScreen extends InfoScreen{
     protected int[] buttonCounts;
     protected Supplier<Screen> nextScreen;
     protected Consumer<CharStatEnum[]> resultsSaver;
-    protected String type;
-    public ManageScreen(CharacterCreationEnum name, String type, Screen parent) {
-        super(Text.translatable(name.getTranslationKey()+"."+type), parent);
+    public BackgroundScreen(CharacterCreationEnum name, Screen parent) {
+        super(Text.translatable(name.getTranslationKey()+".screen"), parent);
         this.name = name;
-        this.level = 20;
         this.optionsLists = name.getOptionsLists();
         this.buttonCounts = name.getButtonCounts();
         this.results = new CharacterCreationEnum[optionsLists.length];
-        this.type = type;
-    }
-    public ManageScreen(CharacterCreationEnum name, String type, int level, Screen parent){
-        this(name, type, parent);
-        this.level = level;
     }
     public void setNextScreen(Supplier<Screen> nextScreen){
         this.nextScreen = nextScreen;
@@ -62,54 +54,44 @@ public class ManageScreen extends InfoScreen{
             }
             buttonCounts = temp;
         }
-        description[0] = leveledAbilities(name.getAbilityCounts(), level);
+        description[0] = leveledAbilities(name.getAbilityCounts());
         ClickableWidget[] buttons;
-        if (!Objects.equals(this.type, "info")) {
-            buttons = new ClickableWidget[buttonCounts[level-1]+2];
-            ButtonAdder buttonAdder = new ButtonAdder();
-            for (int i = 0; i < optionsLists.length; i++) {
-                int I = i;
-                buttonAdder.addButton(buttons, i + 1, value -> name.setResult(value,I), optionsLists[i]);
-            }
-        } else {
-            buttons = new ClickableWidget[2];
+        buttons = new ClickableWidget[buttonCounts[0]+2];
+        ButtonAdder buttonAdder = new ButtonAdder();
+        for (int i = 0; i < optionsLists.length; i++) {
+            int I = i;
+            buttonAdder.addButton(buttons, i + 1, value -> name.setResult(value,I), optionsLists[i]);
         }
         buttons[0] = backButton();
         buttons[buttons.length-1] = screenChangeButton(Text.translatable("mnm.next"), nextScreen, resultsSaver);
         createInfoScreen(buttons, description);
     }
 
-    protected String[] leveledAbilities(int[][] descriptionCounts,int level){
+    protected String[] leveledAbilities(int[][] descriptionCounts){
         this.leveledAbilities = descriptionCounts;
         int total = 5;
-        for(int i=0;i<leveledAbilities.length&i<level;i++)
-            for(int ability: leveledAbilities[i])
-                total+=ability+3;
+        for(int ability: leveledAbilities[0])
+            total+=ability+2;
         leveledDescriptions = new String[total];
         index = 0;
         add("bold");add("description");add("traits0");add("traits1");add();
-        for(int i=0;i<leveledAbilities.length&i<level;i++){
-            int abilCount = 0;
-            if (!Arrays.equals(leveledAbilities[i], new int[]{}))
-                for (int j=0;j<leveledAbilities[i].length;j++){
-                    add("ability"+abilCount);add(i);
-                    abilCount++;
-                    for(int k=0;k<leveledAbilities[i][j];k++){
-                        add("ability"+j+".description"+k);
-                    }
-                    add();
+
+        int abilCount = 0;
+        if (!Arrays.equals(leveledAbilities[0], new int[]{}))
+            for (int j=0;j<leveledAbilities[0].length;j++){
+                add("ability"+abilCount);
+                abilCount++;
+                for(int k=0;k<leveledAbilities[0][j];k++){
+                    add("ability"+j+".description"+k);
                 }
-        }
+                add();
+            }
 
         return leveledDescriptions;
     }
 
     protected void add(String toAdd){
         leveledDescriptions[index] = name.getTranslationKey()+"."+toAdd;
-        index++;
-    }
-    protected void add(int num){
-        leveledDescriptions[index] = "mnm.level."+num;
         index++;
     }
     protected void add(){
