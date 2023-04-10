@@ -4,8 +4,10 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
+import net.mineshafts.mnm.ItemChoice;
 import net.mineshafts.mnm.Lifespan;
 import net.mineshafts.mnm.Speed;
+import net.mineshafts.mnm.StartingGold;
 import net.mineshafts.mnm.enums.SizeEnum;
 import net.mineshafts.mnm.gui.ClassSelection;
 import net.mineshafts.mnm.gui.ManageScreen;
@@ -146,6 +148,13 @@ public enum RaceEnum implements CharacterCreationEnum {
         manage.setNextScreen(()->CLASS_SELECTION);
         manage.setResultsSaver(this.resultsSaver());
         return manage;
+    }
+
+    public ItemChoice[][] getStartingEquipment(){
+        return null;
+    }
+    public StartingGold getStartingGold(){
+        return null;
     }
 
     public AbilityScoreIncrease getAsi() {

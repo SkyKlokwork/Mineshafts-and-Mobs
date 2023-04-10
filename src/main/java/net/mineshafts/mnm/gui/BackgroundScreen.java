@@ -4,9 +4,11 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ClickableWidget;
 import net.minecraft.text.Text;
+import net.mineshafts.mnm.enums.charcreationenums.BackgroundEnum;
 import net.mineshafts.mnm.enums.charcreationenums.CharStatEnum;
 import net.mineshafts.mnm.enums.charcreationenums.CharacterCreationEnum;
 import net.mineshafts.mnm.gui.util.ButtonAdder;
+import net.mineshafts.mnm.playerdata.PlayerBackground;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -28,6 +30,7 @@ public class BackgroundScreen extends InfoScreen{
         this.optionsLists = name.getOptionsLists();
         this.buttonCounts = name.getButtonCounts();
         this.results = new CharacterCreationEnum[optionsLists.length];
+        PlayerBackground.setBackground((BackgroundEnum) name);
     }
     public void setNextScreen(Supplier<Screen> nextScreen){
         this.nextScreen = nextScreen;
@@ -55,8 +58,7 @@ public class BackgroundScreen extends InfoScreen{
             buttonCounts = temp;
         }
         description[0] = leveledAbilities(name.getAbilityCounts());
-        ClickableWidget[] buttons;
-        buttons = new ClickableWidget[buttonCounts[0]+2];
+        ClickableWidget[] buttons = new ClickableWidget[buttonCounts[0]+2];
         ButtonAdder buttonAdder = new ButtonAdder();
         for (int i = 0; i < optionsLists.length; i++) {
             int I = i;

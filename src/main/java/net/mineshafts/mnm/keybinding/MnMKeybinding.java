@@ -21,8 +21,6 @@ public class MnMKeybinding {
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (openASMenu.wasPressed()) {
-                // Send packet to server to request ability score
-                ClientPlayNetworking.send(ModMessages.STRENGTH_REQUEST, PacketByteBufs.create());
                 client.setScreen(new CharacterCreationMenu());
             }
         });

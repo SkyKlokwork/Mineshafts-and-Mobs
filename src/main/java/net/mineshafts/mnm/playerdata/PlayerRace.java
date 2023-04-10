@@ -1,7 +1,12 @@
 package net.mineshafts.mnm.playerdata;
 
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.minecraft.network.PacketByteBuf;
 import net.mineshafts.mnm.enums.charcreationenums.CharStatEnum;
 import net.mineshafts.mnm.enums.charcreationenums.RaceEnum;
+
+import static net.mineshafts.mnm.networking.ModMessages.*;
 
 public class PlayerRace {
     public static boolean existingRace = false;
@@ -23,5 +28,15 @@ public class PlayerRace {
     public static void setSubRace(CharStatEnum subRace) {
         PlayerRace.subRace = subRace;
         existingSubRace = true;
+    }
+    public static void setRace(){
+        if (!existingRace)
+            return;
+        PacketByteBuf packet = PacketByteBufs.create();
+        packet.writeBoolean(existingSubRace);
+        packet.writeString(race.getTranslationKey());
+        if (existingSubRace)
+            packet.writeString(subRace.getTranslationKey());
+        ClientPlayNetworking.send(SET_RACE,packet);
     }
 }

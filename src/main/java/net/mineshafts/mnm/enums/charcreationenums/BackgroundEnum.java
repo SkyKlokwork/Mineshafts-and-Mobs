@@ -4,19 +4,29 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
+import net.mineshafts.mnm.ItemChoice;
+import net.mineshafts.mnm.StartingGold;
 import net.mineshafts.mnm.gui.BackgroundScreen;
 import net.mineshafts.mnm.playerdata.Proficiencies;
 
 import java.util.Arrays;
 import java.util.function.Consumer;
 
+import static net.mineshafts.mnm.enums.StandardEquipment.*;
 import static net.mineshafts.mnm.enums.charcreationenums.SkillsEnum.*;
 import static net.mineshafts.mnm.gui.CharCreationScreen.EQUIPMENT;
 
 @Environment(value= EnvType.CLIENT)
 public enum BackgroundEnum implements CharacterCreationEnum {
     // id, key, Array of proficiencies (armor, weapons, tools, saving throws, skills)<leave last n null for n choices>
-    ACOLYTE(0,"acolyte", new CharStatEnum[]{INSIGHT,RELIGION,null,null}){
+    ACOLYTE(0,"acolyte", new CharStatEnum[]{INSIGHT,RELIGION,null,null},
+            new ItemChoice[][]{
+                    {new ItemChoice("a holy symbol (a gift to you when you entered the priesthood)",A_HOLY_SYMBOL)},
+                    {new ItemChoice("a prayer book",PRAYER_BOOK.getStack(1)),new ItemChoice("a prayer wheel",PRAYER_BOOK.getStack(1))},
+                    {new ItemChoice("vestments",VESTMENTS.getStack(1))},
+                    {new ItemChoice("a pouch containing 15 gp",MONEY_POUCH.getStack(15))},
+                    {new ItemChoice("5 sticks of incense",INCENSE_STICK.getStack(1))},
+    }){
         @Override
         public CharStatEnum[][] getOptionsLists() {
             CharStatEnum[] list = Language.values();
@@ -41,7 +51,7 @@ public enum BackgroundEnum implements CharacterCreationEnum {
             return new int[][]{{2,2}};
         }
     },
-    CELEB_ADVENTURE_SCION(0,"celeb_adventure_scion", new CharStatEnum[]{PERCEPTION,PERFORMANCE,null,null}){
+    CELEB_ADVENTURE_SCION(0,"celeb_adventure_scion", new CharStatEnum[]{PERCEPTION,PERFORMANCE,null,null},null){
         // + Disguise kit proficiency
         @Override
         public CharStatEnum[][] getOptionsLists() {
@@ -72,11 +82,13 @@ public enum BackgroundEnum implements CharacterCreationEnum {
     private final int classId;
     private final String id;
     protected final CharStatEnum[] proficiencies;
+    private final ItemChoice[][] startingEquipment;
 
-    BackgroundEnum(int classId, String id, CharStatEnum[] proficiencies) {
+    BackgroundEnum(int classId, String id, CharStatEnum[] proficiencies, ItemChoice[][] startingEquipment) {
         this.classId = classId;
         this.id = id;
         this.proficiencies = proficiencies;
+        this.startingEquipment = startingEquipment;
     }
 
     @Override
@@ -86,6 +98,13 @@ public enum BackgroundEnum implements CharacterCreationEnum {
     @Override
     public CharStatEnum[] getProficiencies() {
         return proficiencies;
+    }
+
+    public ItemChoice[][] getStartingEquipment(){
+        return startingEquipment;
+    }
+    public StartingGold getStartingGold(){
+        return null;
     }
 
     public int getId(){

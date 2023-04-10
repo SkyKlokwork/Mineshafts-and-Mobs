@@ -23,17 +23,6 @@ public class AbilityScoreData {
         // sync data
         return value;
     }
-    public static int setScore(IEntityDataSaver player, String name, int amount){
-        NbtCompound nbt = player.getPersistentData();
-        nbt.putInt(MnM.ModId+":"+name, amount);
-        PacketByteBuf packet = PacketByteBufs.create();
-        packet.writeString(String.valueOf(nbt));
-        ClientPlayNetworking.send(ModMessages.SEND_MESSAGE, packet);
-        int mod = (amount/2) - 5;
-        nbt.putInt(MnM.ModId+":"+name + "_mod", mod);
-
-        return amount;
-    }
     public static int getScore(IEntityDataSaver player, String name){
         NbtCompound nbt = player.getPersistentData();
         return nbt.getInt(MnM.ModId+":"+name);

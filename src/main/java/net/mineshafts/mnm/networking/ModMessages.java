@@ -1,36 +1,23 @@
 package net.mineshafts.mnm.networking;
 
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.mineshafts.mnm.MnM;
-import net.mineshafts.mnm.playerdata.PlayerAbilityScores;
-import net.mineshafts.mnm.networking.packet.AbilityScoresC2SPacket;
+import net.mineshafts.mnm.networking.packet.StartingEquipmentC2SPacket;
+import net.mineshafts.mnm.playerdata.ServerPlayerData;
 
 public class ModMessages {
-    public static final Identifier STRENGTH_ADD = new Identifier(MnM.ModId, "strength_add");
-    public static final Identifier STRENGTH_SET = new Identifier(MnM.ModId, "strength_set");
-    public static final Identifier DEXTERITY_SET = new Identifier(MnM.ModId, "dexterity_set");
-    public static final Identifier STRENGTH_REQUEST = new Identifier(MnM.ModId, "strength_request");
-    public static final Identifier STRENGTH_GET = new Identifier(MnM.ModId, "strength_get");
-    public static final Identifier SEND_MESSAGE = new Identifier(MnM.ModId, "send_message");
+    public static final Identifier GET_ITEM = new Identifier(MnM.ModId, "get_item");
+    public static final Identifier RESET_NBT = new Identifier(MnM.ModId, "reset_nbt");
+    public static final Identifier SET_ABILITY_SCORES = new Identifier(MnM.ModId,"set_ability_scores");
+    public static final Identifier SET_RACE = new Identifier(MnM.ModId,"set_race");
     public static void registerC2SPackets(){
-        ServerPlayNetworking.registerGlobalReceiver(STRENGTH_ADD, AbilityScoresC2SPacket::addStrength);
-        ServerPlayNetworking.registerGlobalReceiver(STRENGTH_SET, AbilityScoresC2SPacket::setStrength);
-        ServerPlayNetworking.registerGlobalReceiver(DEXTERITY_SET, AbilityScoresC2SPacket::setDexterity);
-        ServerPlayNetworking.registerGlobalReceiver(STRENGTH_REQUEST, AbilityScoresC2SPacket::sendStrength);
+        ServerPlayNetworking.registerGlobalReceiver(GET_ITEM, StartingEquipmentC2SPacket::giveItems);
+        ServerPlayNetworking.registerGlobalReceiver(RESET_NBT, StartingEquipmentC2SPacket::resetNBT);
+        ServerPlayNetworking.registerGlobalReceiver(SET_ABILITY_SCORES, ServerPlayerData::setScores);
+        ServerPlayNetworking.registerGlobalReceiver(SET_RACE, ServerPlayerData::setRace);
     }
     public static void registerS2CPackets(){
-        ClientPlayNetworking.registerGlobalReceiver(STRENGTH_GET, (client, handler, buf, responseSender) -> {
-            int str = buf.readInt();
-            client.execute(() -> {
-                PlayerAbilityScores.setScore("strength", str);
-            });
-        });
-        ClientPlayNetworking.registerGlobalReceiver(SEND_MESSAGE, (client, handler, buf, responseSender) -> {
-            String msg = buf.readString();
-            client.player.sendMessage(Text.of(msg));
-        });
+
     }
 }
