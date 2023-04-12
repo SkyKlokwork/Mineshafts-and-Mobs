@@ -13,6 +13,7 @@ import net.mineshafts.mnm.playerdata.PlayerClass;
 import net.mineshafts.mnm.playerdata.Proficiencies;
 
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 import static net.mineshafts.mnm.enums.StandardEquipment.*;
@@ -154,6 +155,16 @@ public enum ClassEnum implements CharacterCreationEnum {
     public static ClassEnum SgetEnum(int id) {
         for(ClassEnum classEnum: ClassEnum.values()){
             if(classEnum.classId==id)
+                return classEnum;
+        }
+        return null;
+    }
+    public ClassEnum getEnum(String name){
+        return SgetEnum(name);
+    }
+    public static ClassEnum SgetEnum(String name){
+        for(ClassEnum classEnum: ClassEnum.values()){
+            if(Objects.equals(classEnum.getTranslationKey(), name))
                 return classEnum;
         }
         return null;

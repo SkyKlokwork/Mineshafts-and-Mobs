@@ -1,9 +1,11 @@
 package net.mineshafts.mnm;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.mineshafts.mnm.block.ModBlocks;
 import net.mineshafts.mnm.item.ModItems;
 import net.mineshafts.mnm.networking.ModMessages;
+import net.mineshafts.mnm.networking.serveractions.OnPlayerJoin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import net.minecraft.item.Item;
@@ -19,6 +21,8 @@ public class MnM implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModMessages.registerC2SPackets();
+
+		ServerPlayConnectionEvents.JOIN.register(new OnPlayerJoin());
 	}
 }
 

@@ -38,9 +38,22 @@ public enum StatType implements CharStatEnum {
     public CharStatEnum getEnum(int id) {
         return SgetEnum(id);
     }
+
+    @Override
+    public CharStatEnum getEnum(String name) {
+        return SgetEnum(name);
+    }
+
     public static CharStatEnum SgetEnum(int id) {
         for (StatType type: StatType.values()){
             if (type.statId==id)
+                return type;
+        }
+        return null;
+    }
+    public static CharStatEnum SgetEnum(String name){
+        for (StatType type: StatType.values()){
+            if (type.getTranslationKey().equals(name))
                 return type;
         }
         return null;

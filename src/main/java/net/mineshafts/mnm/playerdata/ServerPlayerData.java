@@ -27,4 +27,25 @@ public class ServerPlayerData {
         if (hasSubRace)
             nbt.putString("mnm.subrace",buf.readString());
     }
+
+    public static void setProficiencies(MinecraftServer server, ServerPlayerEntity player,
+                                        ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender){
+        setNbt(player,buf,"mnm.proficiencies");
+    }
+
+    public static void setClass(MinecraftServer server, ServerPlayerEntity player,
+                                        ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender){
+        setNbt(player,buf,"mnm.classes");
+    }
+    public static void setBackground(MinecraftServer server, ServerPlayerEntity player,
+                                     ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender){
+        NbtCompound nbt = ((IEntityDataSaver) player).getPersistentData();
+        nbt.putString("mnm.background",buf.readString());
+    }
+
+    private static void setNbt(ServerPlayerEntity player, PacketByteBuf buf, String key){
+        NbtCompound nbt = ((IEntityDataSaver) player).getPersistentData();
+        NbtCompound value = buf.readNbt();
+        nbt.put(key,value);
+    }
 }

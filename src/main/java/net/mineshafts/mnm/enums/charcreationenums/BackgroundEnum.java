@@ -10,6 +10,7 @@ import net.mineshafts.mnm.gui.BackgroundScreen;
 import net.mineshafts.mnm.playerdata.Proficiencies;
 
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 import static net.mineshafts.mnm.enums.StandardEquipment.*;
@@ -128,6 +129,16 @@ public enum BackgroundEnum implements CharacterCreationEnum {
     public static BackgroundEnum SgetEnum(int id) {
         for(BackgroundEnum backgroundEnum: BackgroundEnum.values()){
             if(backgroundEnum.classId==id)
+                return backgroundEnum;
+        }
+        return null;
+    }
+    public BackgroundEnum getEnum(String name){
+        return SgetEnum(name);
+    }
+    public static BackgroundEnum SgetEnum(String name){
+        for(BackgroundEnum backgroundEnum: BackgroundEnum.values()){
+            if(Objects.equals(backgroundEnum.getTranslationKey(), name))
                 return backgroundEnum;
         }
         return null;

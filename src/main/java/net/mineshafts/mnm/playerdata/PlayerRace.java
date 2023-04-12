@@ -21,12 +21,20 @@ public class PlayerRace {
         PlayerRace.race = race;
         existingRace = true;
     }
+    public static void setRace(String name){
+        PlayerRace.race = (RaceEnum) RaceEnum.SgetEnum(name);
+        existingRace = true;
+    }
 
     public static CharStatEnum getSubRace() {
         return subRace;
     }
     public static void setSubRace(CharStatEnum subRace) {
         PlayerRace.subRace = subRace;
+        existingSubRace = true;
+    }
+    public static void setSubRace(String name){
+        PlayerRace.subRace = race.getSubEnum().getEnum(name);
         existingSubRace = true;
     }
     public static void setRace(){

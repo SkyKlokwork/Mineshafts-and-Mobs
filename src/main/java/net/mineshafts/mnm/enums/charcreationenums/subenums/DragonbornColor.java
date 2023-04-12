@@ -1,10 +1,14 @@
-package net.mineshafts.mnm.enums.charcreationenums;
+package net.mineshafts.mnm.enums.charcreationenums.subenums;
 
 import net.minecraft.text.Text;
 import net.mineshafts.mnm.enums.DamageType;
+import net.mineshafts.mnm.enums.charcreationenums.CharStatEnum;
+import net.mineshafts.mnm.enums.charcreationenums.StatType;
 import net.mineshafts.mnm.spells.Area;
 import net.mineshafts.mnm.spells.Cone;
 import net.mineshafts.mnm.spells.Line;
+
+import java.util.Objects;
 
 public enum DragonbornColor implements CharStatEnum {
     CHOOSE(-1,"mnm.menu.choose_option", null, null, null),
@@ -67,6 +71,19 @@ public enum DragonbornColor implements CharStatEnum {
     public CharStatEnum getEnum(int id) {
         return DragonbornColor.SgetEnum(id);
     }
+
+    @Override
+    public CharStatEnum getEnum(String name) {
+        return DragonbornColor.SgetEnum(name);
+    }
+    public static CharStatEnum SgetEnum(String name){
+        for(DragonbornColor color:DragonbornColor.values()){
+            if(Objects.equals("mnm.dragonborn."+color.id, name))
+                return color;
+        }
+        return null;
+    }
+
     public static CharStatEnum SgetEnum(int id){
         for(DragonbornColor color:DragonbornColor.values()){
             if(color.colorId==id)

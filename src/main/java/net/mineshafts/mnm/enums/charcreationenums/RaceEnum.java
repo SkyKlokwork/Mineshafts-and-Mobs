@@ -9,12 +9,13 @@ import net.mineshafts.mnm.Lifespan;
 import net.mineshafts.mnm.Speed;
 import net.mineshafts.mnm.StartingGold;
 import net.mineshafts.mnm.enums.SizeEnum;
-import net.mineshafts.mnm.gui.ClassSelection;
+import net.mineshafts.mnm.enums.charcreationenums.subenums.DragonbornColor;
 import net.mineshafts.mnm.gui.ManageScreen;
 import net.mineshafts.mnm.playerdata.AbilityScoreIncrease;
 import net.mineshafts.mnm.playerdata.PlayerRace;
 
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 import static net.mineshafts.mnm.gui.CharCreationScreen.*;
@@ -132,6 +133,16 @@ public enum RaceEnum implements CharacterCreationEnum {
     public static CharacterCreationEnum SgetEnum(int id){
         for (RaceEnum race: RaceEnum.values()){
             if(race.raceId==id)
+                return race;
+        }
+        return null;
+    }
+    public CharacterCreationEnum getEnum(String name){
+        return RaceEnum.SgetEnum(name);
+    }
+    public static CharacterCreationEnum SgetEnum(String name){
+        for (RaceEnum race: RaceEnum.values()){
+            if(Objects.equals(race.getTranslationKey(), name))
                 return race;
         }
         return null;
