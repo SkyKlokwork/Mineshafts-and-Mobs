@@ -28,8 +28,20 @@ public class DiceItem extends Item {
     }
 
     private void outputRandomNumber (PlayerEntity player) {
-        int rand = getRandomNumber();
-        player.sendMessage(Text.literal(getStringColor(rand) + "Rolled " + rand));
+        int[] rolledNums = new int[5];
+        int itemCount = player.getMainHandStack().getCount();
+        for (int i = 0; i < itemCount; i++){
+            rolledNums[i] = getRandomNumber();
+        }
+        if (itemCount == 1){
+            player.sendMessage(Text.literal(getStringColor(rolledNums[0]) + "Rolled a " + rolledNums[0]));
+        }
+        else {
+            player.sendMessage(Text.literal("Your " + itemCount + " dice rolled the following:"));
+            for(int i = 0; i < itemCount; i++){
+                player.sendMessage(Text.literal(getStringColor(rolledNums[i]) + "Rolled a " + rolledNums[i]));
+            }
+        }
     }
 
     private int getRandomNumber() {
