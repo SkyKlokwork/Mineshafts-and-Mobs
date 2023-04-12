@@ -34,6 +34,19 @@ public enum ArmorType implements CharStatEnum{
     public CharStatEnum getEnum(int id) {
         return SgetEnum(id);
     }
+
+    @Override
+    public CharStatEnum getEnum(String name) {
+        return SgetEnum(name);
+    }
+    public static CharStatEnum SgetEnum(String name){
+        for (ArmorType type: ArmorType.values()){
+            if(type.getTranslationKey().equals(name))
+                return type;
+        }
+        return null;
+    }
+
     public static CharStatEnum SgetEnum(int id){
         for (ArmorType type: ArmorType.values()){
             if(type.id==id)

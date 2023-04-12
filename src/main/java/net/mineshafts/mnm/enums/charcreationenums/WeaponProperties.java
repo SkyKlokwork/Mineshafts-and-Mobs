@@ -1,11 +1,12 @@
 package net.mineshafts.mnm.enums.charcreationenums;
 
-public enum WeaponCategory implements CharStatEnum{
-    SIMPLE(0,"weapons.simple"),
-    MARTIAL(1,"weapons.martial");
+public enum WeaponProperties implements CharStatEnum{
+    MELEE(0,"weapons.melee"),
+    RANGED(1,"weapons.ranged"),
+    VERSATILE(2, "weapons.versatile");
     private final int id;
     private final String key;
-    WeaponCategory(int id, String key){
+    WeaponProperties(int id, String key){
         this.id = id;
         this.key = key;
     }
@@ -25,18 +26,11 @@ public enum WeaponCategory implements CharStatEnum{
 
     @Override
     public CharStatEnum getEnum(String name) {
-        return SgetEnum(name);
-    }
-    public static CharStatEnum SgetEnum(String name) {
-        for (WeaponCategory category: WeaponCategory.values()){
-            if(category.getTranslationKey().equals(name))
-                return category;
-        }
         return null;
     }
 
     public static CharStatEnum SgetEnum(int id){
-        for (WeaponCategory category: WeaponCategory.values()){
+        for (WeaponProperties category: WeaponProperties.values()){
             if(category.id==id)
                 return category;
         }

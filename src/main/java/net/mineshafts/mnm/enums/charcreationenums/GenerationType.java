@@ -48,6 +48,9 @@ public enum GenerationType implements CharStatEnum{
     public CharStatEnum getEnum(int id) {
         return SgetEnum(id);
     }
+    public CharStatEnum getEnum(String name){
+        return null;
+    }
     public static CharStatEnum SgetEnum(int id){
         for (GenerationType type: GenerationType.values()){
             if (type.id==id)

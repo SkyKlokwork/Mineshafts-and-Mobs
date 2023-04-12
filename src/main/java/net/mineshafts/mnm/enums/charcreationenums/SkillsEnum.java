@@ -1,5 +1,7 @@
 package net.mineshafts.mnm.enums.charcreationenums;
 
+import java.util.Objects;
+
 public enum SkillsEnum implements CharStatEnum {
     CHOOSE(-1,"choose.skill.barbarian",null),
     ACROBATICS(0,"acrobatics", StatType.DEXTERITY),
@@ -50,6 +52,19 @@ public enum SkillsEnum implements CharStatEnum {
     public CharStatEnum getEnum(int id) {
         return SgetEnum(id);
     }
+
+    @Override
+    public CharStatEnum getEnum(String name) {
+        return SgetEnum(name);
+    }
+    public static CharStatEnum SgetEnum(String name){
+        for (SkillsEnum skill: SkillsEnum.values()){
+            if (Objects.equals(skill.getTranslationKey(), name))
+                return skill;
+        }
+        return null;
+    }
+
     public static CharStatEnum SgetEnum(int id){
         for (SkillsEnum skill: SkillsEnum.values()){
             if (skill.skillID==id)
