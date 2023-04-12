@@ -11,6 +11,7 @@ public class ModMessages {
     public static final Identifier RESET_NBT = new Identifier(MnM.ModId, "reset_nbt");
     public static final Identifier SET_ABILITY_SCORES = new Identifier(MnM.ModId,"set_ability_scores");
     public static final Identifier SET_RACE = new Identifier(MnM.ModId,"set_race");
+    public static final Identifier SET_SPELLS = new Identifier(MnM.ModId, "example");
     public static void registerC2SPackets(){
         ServerPlayNetworking.registerGlobalReceiver(GET_ITEM, StartingEquipmentC2SPacket::giveItems);
         ServerPlayNetworking.registerGlobalReceiver(RESET_NBT, StartingEquipmentC2SPacket::resetNBT);
