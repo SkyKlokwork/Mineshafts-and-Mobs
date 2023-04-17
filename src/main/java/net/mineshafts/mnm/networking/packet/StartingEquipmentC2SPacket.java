@@ -28,7 +28,7 @@ public class StartingEquipmentC2SPacket {
 
     public static void resetNBT(MinecraftServer server, ServerPlayerEntity player,
                                 ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender){
-        NbtCompound copy = new NbtCompound();
-        player.nbt
+        NbtCompound blank = new NbtCompound();
+        player.writeNbt(blank);
     }
 }
