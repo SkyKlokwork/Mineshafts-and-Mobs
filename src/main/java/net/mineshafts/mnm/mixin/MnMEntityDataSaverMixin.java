@@ -19,6 +19,10 @@ public abstract class MnMEntityDataSaverMixin implements IEntityDataSaver {
             this.persistentData = new NbtCompound();
         return persistentData;
     }
+    @Override
+    public void resetData(){
+        this.persistentData = null;
+    }
 
     @Inject(method = "writeNbt", at = @At("HEAD"))
     protected void injectWriteMethod(NbtCompound nbt, CallbackInfoReturnable info) {

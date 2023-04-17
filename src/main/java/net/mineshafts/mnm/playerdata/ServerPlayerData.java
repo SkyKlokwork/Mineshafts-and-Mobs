@@ -72,7 +72,8 @@ public class ServerPlayerData {
                 output.append(element);
             output.append(',');
         }
-        output.deleteCharAt(output.length()-1);
+        if (keys.size()>0)
+            output.deleteCharAt(output.length()-1);
         output.append('}');
         return output.toString();
     }
