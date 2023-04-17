@@ -22,7 +22,8 @@ public class MnM implements ModInitializer {
 		ModBlocks.registerModBlocks();
 		ModMessages.registerC2SPackets();
 
-		ServerPlayConnectionEvents.JOIN.register(new OnPlayerJoin());
+		ServerPlayConnectionEvents.INIT.register(new OnPlayerJoin());
+//		ServerPlayConnectionEvents.JOIN.register(new OnPlayerJoin());
 	}
 }
 

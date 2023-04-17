@@ -5,6 +5,7 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextWidget;
 import net.minecraft.text.Text;
 
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class MenuScreenMain extends Screen {
@@ -12,8 +13,8 @@ public class MenuScreenMain extends Screen {
         super(title);
     }
 
-    protected ButtonWidget createButton(Text text, Supplier<Screen> screenSupplier) {
-        return ButtonWidget.builder(text, button -> this.client.setScreen((Screen)screenSupplier.get())).width(98).build();
+    protected ButtonWidget createButton(Text text, ButtonWidget.PressAction screenConsumer) {
+        return ButtonWidget.builder(text, screenConsumer).width(98).build();
     }
     protected TextWidget createText(Text text, int x, int y, int width){
         return new TextWidget(x, y, width, this.textRenderer.fontHeight, text, this.textRenderer);

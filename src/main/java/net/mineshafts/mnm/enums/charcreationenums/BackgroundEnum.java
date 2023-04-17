@@ -7,6 +7,7 @@ import net.minecraft.text.Text;
 import net.mineshafts.mnm.ItemChoice;
 import net.mineshafts.mnm.StartingGold;
 import net.mineshafts.mnm.gui.BackgroundScreen;
+import net.mineshafts.mnm.playerdata.PlayerBackground;
 import net.mineshafts.mnm.playerdata.Proficiencies;
 
 import java.util.Arrays;
@@ -94,7 +95,10 @@ public enum BackgroundEnum implements CharacterCreationEnum {
 
     @Override
     public Consumer<CharStatEnum[]> resultsSaver() {
-        return results->Proficiencies.addProficiencies(this.getProficiencies());
+        return results->{
+            PlayerBackground.setBackground();
+            Proficiencies.addProficiencies(this.getProficiencies());
+        };
     }
     @Override
     public CharStatEnum[] getProficiencies() {

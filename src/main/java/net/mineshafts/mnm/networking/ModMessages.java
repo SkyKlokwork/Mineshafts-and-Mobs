@@ -16,6 +16,7 @@ public class ModMessages {
     public static final Identifier SET_CLASS = new Identifier(MnM.ModId,"set_class");
     public static final Identifier SET_BACKGROUND = new Identifier(MnM.ModId,"set_background");
     public static final Identifier SET_PROFICIENCIES = new Identifier(MnM.ModId,"set_proficiencies");
+    public static final Identifier BROADCAST_NBT = new Identifier(MnM.ModId, "broadcast_nbt");
     public static void registerC2SPackets(){
         ServerPlayNetworking.registerGlobalReceiver(GET_ITEM, StartingEquipmentC2SPacket::giveItems);
         ServerPlayNetworking.registerGlobalReceiver(RESET_NBT, StartingEquipmentC2SPacket::resetNBT);
@@ -24,6 +25,7 @@ public class ModMessages {
         ServerPlayNetworking.registerGlobalReceiver(SET_CLASS, ServerPlayerData::setClass);
         ServerPlayNetworking.registerGlobalReceiver(SET_BACKGROUND, ServerPlayerData::setBackground);
         ServerPlayNetworking.registerGlobalReceiver(SET_PROFICIENCIES, ServerPlayerData::setProficiencies);
+        ServerPlayNetworking.registerGlobalReceiver(BROADCAST_NBT,ServerPlayerData::broadcastNbt);
     }
     public static final Identifier SEND_PLAYER_INFO = new Identifier(MnM.ModId,"send_player_info");
     public static void registerS2CPackets(){

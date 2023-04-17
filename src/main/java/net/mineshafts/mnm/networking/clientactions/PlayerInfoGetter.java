@@ -5,6 +5,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.text.Text;
 import net.mineshafts.mnm.enums.charcreationenums.BackgroundEnum;
 import net.mineshafts.mnm.playerdata.*;
 
