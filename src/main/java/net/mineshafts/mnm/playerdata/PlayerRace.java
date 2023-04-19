@@ -32,6 +32,7 @@ public class PlayerRace {
     public static void setSubRace(CharStatEnum subRace) {
         PlayerRace.subRace = subRace;
         existingSubRace = true;
+        setRace();
     }
     public static void setSubRace(String name){
         PlayerRace.subRace = race.getSubEnum().getEnum(name);

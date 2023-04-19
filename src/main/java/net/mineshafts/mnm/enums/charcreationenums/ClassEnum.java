@@ -127,7 +127,10 @@ public enum ClassEnum implements CharacterCreationEnum {
 
     @Override
     public Consumer<CharStatEnum[]> resultsSaver() {
-        return results->Proficiencies.addProficiencies(this.getProficiencies());
+        return results->{
+            PlayerClass.setClasses();
+            Proficiencies.addProficiencies(this.getProficiencies());
+        };
     }
     @Override
     public CharStatEnum[] getProficiencies() {

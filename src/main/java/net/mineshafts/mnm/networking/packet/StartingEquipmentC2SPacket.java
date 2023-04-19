@@ -14,6 +14,8 @@ import net.mineshafts.mnm.networking.serveractions.ItemGiver;
 import net.mineshafts.mnm.util.AbilityScoreData;
 import net.mineshafts.mnm.util.IEntityDataSaver;
 
+import java.util.Set;
+
 public class StartingEquipmentC2SPacket {
     public static void giveItems(MinecraftServer server, ServerPlayerEntity player,
                                    ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender){
@@ -26,8 +28,6 @@ public class StartingEquipmentC2SPacket {
 
     public static void resetNBT(MinecraftServer server, ServerPlayerEntity player,
                                 ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender){
-        NbtCompound nbt = ((IEntityDataSaver) player).getPersistentData();
-        for (String key:nbt.getKeys())
-            nbt.remove(key);
+        ((IEntityDataSaver) player).resetData();
     }
 }
