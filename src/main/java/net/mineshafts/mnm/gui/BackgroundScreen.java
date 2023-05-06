@@ -11,7 +11,6 @@ import net.mineshafts.mnm.gui.util.ButtonAdder;
 import net.mineshafts.mnm.playerdata.PlayerBackground;
 
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -29,7 +28,7 @@ public class BackgroundScreen extends InfoScreen{
         this.name = name;
         this.optionsLists = name.getOptionsLists();
         this.buttonCounts = name.getButtonCounts();
-        this.results = new CharacterCreationEnum[optionsLists.length];
+        this.results = new CharStatEnum[optionsLists.length];
         PlayerBackground.setBackground((BackgroundEnum) name);
     }
     public void setNextScreen(Supplier<Screen> nextScreen){
@@ -62,7 +61,7 @@ public class BackgroundScreen extends InfoScreen{
         ButtonAdder buttonAdder = new ButtonAdder();
         for (int i = 0; i < optionsLists.length; i++) {
             int I = i;
-            buttonAdder.addButton(buttons, i + 1, value -> name.setResult(value,I), optionsLists[i]);
+            buttonAdder.addButton(buttons, i + 1, value -> results[I] = value, optionsLists[i]);
         }
         buttons[0] = backButton();
         buttons[buttons.length-1] = screenChangeButton(Text.translatable("mnm.next"), nextScreen, resultsSaver);

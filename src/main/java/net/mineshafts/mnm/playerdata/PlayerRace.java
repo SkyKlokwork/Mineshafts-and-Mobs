@@ -30,6 +30,8 @@ public class PlayerRace {
         return subRace;
     }
     public static void setSubRace(CharStatEnum subRace) {
+        if (subRace == null)
+            return;
         PlayerRace.subRace = subRace;
         existingSubRace = true;
         setRace();

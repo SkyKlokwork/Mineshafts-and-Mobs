@@ -46,7 +46,7 @@ public enum RaceEnum implements CharacterCreationEnum {
         }
 
         @Override
-        public void setResult(CharStatEnum Enum, int index) {
+        public void getResult(CharStatEnum Enum, int index) {
 
         }
         @Override
@@ -79,7 +79,7 @@ public enum RaceEnum implements CharacterCreationEnum {
         }
 
         @Override
-        public void setResult(CharStatEnum Enum, int index) {
+        public void getResult(CharStatEnum Enum, int index) {
 
         }
         @Override

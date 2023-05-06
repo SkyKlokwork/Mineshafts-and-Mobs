@@ -1,7 +1,6 @@
 package net.mineshafts.mnm.enums.charcreationenums;
 
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.item.ItemStack;
 import net.mineshafts.mnm.ItemChoice;
 import net.mineshafts.mnm.StartingGold;
 
@@ -16,7 +15,7 @@ public interface CharacterCreationEnum extends CharStatEnum {
     CharStatEnum getSubEnum();
     int[] getButtonCounts();
     CharStatEnum[] getProficiencies();
-    void setResult(CharStatEnum Enum, int index);
+    void getResult(CharStatEnum Enum, int index);
     Consumer<CharStatEnum[]> resultsSaver();
     ItemChoice[][] getStartingEquipment();
     StartingGold getStartingGold();

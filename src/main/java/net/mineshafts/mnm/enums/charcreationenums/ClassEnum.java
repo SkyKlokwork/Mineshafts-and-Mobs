@@ -49,7 +49,7 @@ public enum ClassEnum implements CharacterCreationEnum {
         }
 
         @Override
-        public void setResult(CharStatEnum Enum, int index) {
+        public void getResult(CharStatEnum Enum, int index) {
             proficiencies[proficiencies.length-2+index] = Enum;
         }
 
@@ -86,7 +86,7 @@ public enum ClassEnum implements CharacterCreationEnum {
         }
 
         @Override
-        public void setResult(CharStatEnum Enum, int index) {
+        public void getResult(CharStatEnum Enum, int index) {
 
         }
 

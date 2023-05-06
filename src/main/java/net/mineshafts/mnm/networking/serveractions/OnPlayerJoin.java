@@ -13,13 +13,6 @@ import net.mineshafts.mnm.util.IEntityDataSaver;
 import static net.mineshafts.mnm.networking.ModMessages.SEND_PLAYER_INFO;
 
 public class OnPlayerJoin implements ServerPlayConnectionEvents.Init {
-//    @Override
-//    public void onPlayInit(ServerPlayNetworkHandler handler, PacketSender sender, MinecraftServer server) {
-//        PacketByteBuf packet = PacketByteBufs.create();
-//        NbtCompound nbt = ((IEntityDataSaver)handler.player).getPersistentData();
-//        packet.writeNbt(nbt);
-//        ServerPlayNetworking.send(handler.player, SEND_PLAYER_INFO, packet);
-//    }
 
     @Override
     public void onPlayInit(ServerPlayNetworkHandler handler, MinecraftServer server) {

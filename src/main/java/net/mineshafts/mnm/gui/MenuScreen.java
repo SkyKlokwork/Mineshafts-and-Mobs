@@ -19,13 +19,13 @@ public class MenuScreen extends Screen {
     }
 
     protected ButtonWidget screenChangeButton(Text text, Supplier<Screen> screenSupplier) {
-        return ButtonWidget.builder(text, button -> this.client.setScreen((Screen)screenSupplier.get())).width(98).build();
+        return ButtonWidget.builder(text, button -> this.client.setScreen(screenSupplier.get())).width(98).build();
     }
     protected ButtonWidget screenChangeButton(Text text, Supplier<Screen> screenSupplier, Runnable onClick) {
-        return ButtonWidget.builder(text, button -> {this.client.setScreen((Screen)screenSupplier.get());onClick.run();}).width(98).build();
+        return ButtonWidget.builder(text, button -> {this.client.setScreen(screenSupplier.get());onClick.run();}).width(98).build();
     }
     protected ButtonWidget screenChangeButton(Text text, Supplier<Screen> screenSupplier, Consumer<CharStatEnum[]> onClick) {
-        return ButtonWidget.builder(text, button -> {this.client.setScreen((Screen)screenSupplier.get());if(onClick!=null)onClick.accept(results);}).width(98).build();
+        return ButtonWidget.builder(text, button -> {this.client.setScreen(screenSupplier.get());if(onClick!=null)onClick.accept(results);}).width(98).build();
     }
     protected ButtonWidget createButton(Text text, ButtonWidget.PressAction onPress, Text tooltip){
         return ButtonWidget.builder(text, onPress).width(98).tooltip(Tooltip.of(tooltip)).build();
