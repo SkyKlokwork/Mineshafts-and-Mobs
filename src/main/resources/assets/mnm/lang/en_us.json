@@ -4,6 +4,11 @@
 
   "block.mnm.gold_coin_pile": "Pile of Gold Coins",
 
+  "item.mnm.magic_ore": "Magic Ore",
+  "block.mnm.magic_ore_block": "Magic Ore Block",
+  "block.mnm.deepslate_magic_ore_block": "Deepslate Magic Ore",
+  "block.mnm.magic_block": "Magic Block",
+
   "key.mnm.menu.abilityscores": "Open Ability Score Menu",
 
   "key.category.mnm": "Mineshafts & Mobs",
