@@ -55,6 +55,7 @@ public class SpellHandler {
         if (list.length == 0) {
             player.sendMessage(Text.literal("No spell"));
         }
+        if (current==0) current= 1;
         else
         switch (list[current - 1]) {
             case 1: player.sendMessage(Text.literal("Spell 1"));

@@ -13,7 +13,7 @@ import static net.mineshafts.mnm.networking.ModMessages.CHANGE_SPELL;
 public class SpellCycle {
 
     static List<Integer> spells_local = new ArrayList<>();
-    static int current_local;
+    static int current_local = 1;
     public static void getSpellData(int[] spells, int current){
         for (int i:spells) {
             if(!spells_local.contains(i))
