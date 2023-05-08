@@ -1,6 +1,5 @@
 package net.mineshafts.mnm.item;
 
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -26,7 +25,9 @@ public class ModItems {
             new DiceItem(new Item.Settings().maxCount(5), 20),MINESHAFTS);
 
     public static final Item STAFF_ITEM = registerItem("staff_item",
-            new StaffItem(new Item.Settings()),MINESHAFTS);
+            new StaffItem(new Item.Settings().maxCount(1),1,1,1,1),MINESHAFTS);
+    public static final Item SLY_STAFF_ITEM = registerItem("sly_staff",
+            new StaffItem(new Item.Settings().maxCount(1),1,2,1,1),MINESHAFTS);
 
     private static Item registerItem(String name, Item item, ItemGroup group) {
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(item));

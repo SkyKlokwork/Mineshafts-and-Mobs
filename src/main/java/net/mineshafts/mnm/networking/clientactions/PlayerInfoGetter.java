@@ -5,7 +5,6 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.text.Text;
 import net.mineshafts.mnm.enums.charcreationenums.BackgroundEnum;
 import net.mineshafts.mnm.playerdata.*;
 
@@ -17,7 +16,7 @@ public class PlayerInfoGetter {
         if (nbt.contains("mnm.strength")) {
             int[] scores = new int[]{nbt.getInt("mnm.strength"), nbt.getInt("mnm.dexterity"), nbt.getInt("mnm.constitution"),
                     nbt.getInt("mnm.wisdom"), nbt.getInt("mnm.intelligence"), nbt.getInt("mnm.charisma")};
-            PlayerAbilityScores.setScores(scores);
+            //PlayerAbilityScores.setScores(scores);
         }
         if (nbt.contains("mnm.race")) {
             PlayerRace.setRace(nbt.getString("mnm.race"));
@@ -33,6 +32,9 @@ public class PlayerInfoGetter {
         }
         if (nbt.contains("mnm.proficiencies")) {
             Proficiencies.getProficiencies(nbt.getCompound("mnm.proficiencies"));
+        }
+        if (nbt.contains("mnm.known_spells") || nbt.contains("mnm.current_spell")) {
+            SpellCycle.getSpellData(nbt.getIntArray("mnm.known_spells"),nbt.getInt("mnm.current_spell"));
         }
         // Put future Player Info types here
     }

@@ -1,27 +1,24 @@
-package net.mineshafts.mnm.networking.serveractions;
+package net.mineshafts.mnm.networking.packet;
 
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
+import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.mineshafts.mnm.networking.serveractions.SpellHandler;
 import net.mineshafts.mnm.util.IEntityDataSaver;
 
 import static net.mineshafts.mnm.networking.ModMessages.SEND_PLAYER_INFO;
 
-public class OnPlayerJoin implements ServerPlayConnectionEvents.Init {
-//    @Override
-//    public void onPlayInit(ServerPlayNetworkHandler handler, PacketSender sender, MinecraftServer server) {
-//        PacketByteBuf packet = PacketByteBufs.create();
-//        NbtCompound nbt = ((IEntityDataSaver)handler.player).getPersistentData();
-//        packet.writeNbt(nbt);
-//        ServerPlayNetworking.send(handler.player, SEND_PLAYER_INFO, packet);
-//    }
+public class SpellC2SPacket {
+    public static void AddSpells(MinecraftServer server, ServerPlayerEntity player,
+                             ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
+        SpellHandler.addSpells(player, buf);
 
-    @Override
-    public void onPlayInit(ServerPlayNetworkHandler handler, MinecraftServer server) {
+        //TODO: figure out best way to get new data to SpellCycle
         PacketByteBuf packet = PacketByteBufs.create();
         NbtCompound nbt = ((IEntityDataSaver)handler.player).getPersistentData();
         packet.writeNbt(nbt);

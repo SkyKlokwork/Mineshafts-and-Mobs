@@ -22,6 +22,7 @@ public class ServerPlayerData {
         nbt.putInt("mnm.intelligence",buf.readInt());
         nbt.putInt("mnm.wisdom",buf.readInt());
         nbt.putInt("mnm.charisma",buf.readInt());
+
     }
     public static void setRace(MinecraftServer server, ServerPlayerEntity player,
                                ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender){
@@ -45,6 +46,16 @@ public class ServerPlayerData {
                                      ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender){
         NbtCompound nbt = ((IEntityDataSaver) player).getPersistentData();
         nbt.putString("mnm.background",buf.readString());
+    }
+    public static void changeSpell(MinecraftServer server, ServerPlayerEntity player,
+                                   ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
+        NbtCompound nbt = ((IEntityDataSaver) player).getPersistentData();
+        nbt.putInt("mnm.current_spell",buf.readInt());
+        player.sendMessage(Text.literal(String.valueOf(nbt.getInt("mnm.current_spell"))));
+        player.sendMessage(Text.literal(SpellCycle.get_listData()));
+    }
+    public static void castSpell(MinecraftServer server, ServerPlayerEntity player,
+                                 ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
     }
 
     private static void setNbt(ServerPlayerEntity player, PacketByteBuf buf, String key){
