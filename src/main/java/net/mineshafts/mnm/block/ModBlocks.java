@@ -17,7 +17,7 @@ import net.mineshafts.mnm.item.ModItemGroup;
 public class ModBlocks {
 
     public static final Block GOLD_COIN_PILE = registerBlock("gold_coin_pile",
-            new Block(FabricBlockSettings.of(Material.METAL)), ModItemGroup.Mineshafts);
+            new RedstonePropertiesBlock(FabricBlockSettings.of(Material.METAL).nonOpaque()), ModItemGroup.Mineshafts);
 
     private static Block registerBlock(String name, Block block, ItemGroup tab) {
         registerBlockItem(name, block, tab);
