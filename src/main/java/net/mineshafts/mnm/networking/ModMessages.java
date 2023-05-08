@@ -33,7 +33,7 @@ public class ModMessages {
 
         ServerPlayNetworking.registerGlobalReceiver(SET_SPELLS, SpellC2SPacket::AddSpells);
         ServerPlayNetworking.registerGlobalReceiver(CHANGE_SPELL,ServerPlayerData::changeSpell);
-        ServerPlayNetworking.registerGlobalReceiver(CAST_SPELL, ServerPlayerData::castSpell);
+        ServerPlayNetworking.registerGlobalReceiver(CAST_SPELL, SpellC2SPacket::CastSpell);
 
         ServerPlayNetworking.registerGlobalReceiver(BROADCAST_NBT,ServerPlayerData::broadcastNbt);
     }

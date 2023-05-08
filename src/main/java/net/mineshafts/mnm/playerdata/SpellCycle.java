@@ -16,6 +16,7 @@ public class SpellCycle {
     static int current_local;
     public static void getSpellData(int[] spells, int current){
         for (int i:spells) {
+            if(!spells_local.contains(i))
            spells_local.add(i);
         }
         current_local = current;

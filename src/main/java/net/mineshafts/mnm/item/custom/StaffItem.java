@@ -11,6 +11,10 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static net.mineshafts.mnm.networking.ModMessages.CAST_SPELL;
 import static net.mineshafts.mnm.networking.ModMessages.SET_SPELLS;
 
 public class StaffItem extends Item {
@@ -18,6 +22,8 @@ public class StaffItem extends Item {
     private final int RANGE;
     private final float POWER;
     private final int MANA_USAGE;
+    static int[] test = new int[]{1,13,12,9};
+    static int iterator = 0;
 
     public StaffItem(Settings settings, int cooldown, int range, float power, int mana_usage){
         super(settings);
@@ -32,11 +38,12 @@ public class StaffItem extends Item {
         PacketByteBuf buf = PacketByteBufs.create();
         if(!world.isClient() && hand == Hand.MAIN_HAND) {
             user.getItemCooldownManager().set(this, 5);
-            if(user.isSneaking())
-                buf.writeIntArray(new int[]{1,13,12,9});
-            else
-                buf.writeInt(13);
-            ClientPlayNetworking.send(SET_SPELLS, buf);
+            if(user.isSneaking()){
+                buf.writeIntArray(new int[]{test[iterator]});
+                iterator++;
+                ClientPlayNetworking.send(SET_SPELLS, buf);
+            }else
+            ClientPlayNetworking.send(CAST_SPELL, buf);
         }
 
 

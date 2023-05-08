@@ -3,6 +3,7 @@ package net.mineshafts.mnm.networking.serveractions;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.Text;
 import net.mineshafts.mnm.util.IEntityDataSaver;
 
 import java.util.ArrayList;
@@ -44,17 +45,26 @@ public class SpellHandler {
                 if (!temp.contains(i))
                     temp.add(i);
             }
-        } else {
-            //TODO: figure out why I can't put just one number in
-            for (int i : nbt.getIntArray("mnm.known_spells")) {
-                temp.add(i);
-            }
-            if(!/**added to test**/validSpell(packet.readInt())){
-               if (!temp.contains(packet.readInt()))
-                    temp.add(packet.readInt());
-            }
         }
         nbt.putIntArray("mnm.known_spells", temp);
-
+    }
+    public static void castSpell(ServerPlayerEntity player) {
+        NbtCompound nbt = ((IEntityDataSaver)player).getPersistentData();
+        int[] list = nbt.getIntArray("mnm.known_spells");
+        int current = nbt.getInt("mnm.current_spell");
+        if (list.length == 0) {
+            player.sendMessage(Text.literal("No spell"));
+        }
+        else
+        switch (list[current - 1]) {
+            case 1: player.sendMessage(Text.literal("Spell 1"));
+                break;
+            case 13: player.sendMessage(Text.literal("Spell 2"));
+                break;
+            case 12: player.sendMessage(Text.literal("Spell 3"));
+                break;
+            case 9: player.sendMessage(Text.literal("Spell 4"));
+                break;
+        }
     }
 }

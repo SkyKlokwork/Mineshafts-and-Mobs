@@ -24,4 +24,8 @@ public class SpellC2SPacket {
         packet.writeNbt(nbt);
         ServerPlayNetworking.send(handler.player, SEND_PLAYER_INFO, packet);
     }
+    public static void CastSpell(MinecraftServer server, ServerPlayerEntity player,
+                                 ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender){
+        SpellHandler.castSpell(player);
+    }
 }
