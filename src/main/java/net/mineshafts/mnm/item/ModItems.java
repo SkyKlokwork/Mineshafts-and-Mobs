@@ -10,7 +10,12 @@ import net.mineshafts.mnm.MnM;
 import net.minecraft.registry.Registry;
 import net.mineshafts.mnm.item.custom.DiceItem;
 
+import javax.xml.namespace.QName;
+
 public class ModItems {
+
+    public static final Item MAGICORE = registerItem("magic_ore",
+        new Item(new Item.Settings()), ModItemGroup.Mineshafts);
 
     public static final Item GOLD_COIN = registerItem("gold_coin",
             new Item(new Item.Settings()), ModItemGroup.Mineshafts);

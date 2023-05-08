@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "mnm:block/deepslate_magic_ore_block"
+  }
+}

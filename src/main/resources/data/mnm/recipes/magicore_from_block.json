@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mnm:magic_block"
+    }
+  ],
+  "result": {
+    "item": "mnm:magic_ore",
+    "count": 9
+  }
+}

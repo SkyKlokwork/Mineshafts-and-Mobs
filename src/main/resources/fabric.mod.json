@@ -30,6 +30,7 @@
       "net.mineshafts.mnm.MnMClient"
     ]
   },
+
   "mixins": [
     "mnm.mixins.json"
   ],

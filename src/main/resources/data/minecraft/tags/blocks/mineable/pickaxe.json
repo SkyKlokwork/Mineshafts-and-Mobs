@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-
+    "mnm:magic_ore_block",
+    "mnm:deepslate_magic_ore_block",
+    "mnm:magic_block"
   ]
 }
