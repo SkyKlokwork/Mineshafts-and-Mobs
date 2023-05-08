@@ -8,7 +8,7 @@ import net.mineshafts.mnm.enums.charcreationenums.ClassEnum;
 
 public class ClassSelection extends CharCreationScreen {
     public ClassSelection(Screen parent) {
-        super(Text.translatable("mnm.menu.raceselection"), parent);
+        super(Text.translatable("mnm.menu.classselection"), parent);
     }
     @Override
     public void init() {

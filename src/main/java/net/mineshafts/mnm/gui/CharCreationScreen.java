@@ -12,8 +12,8 @@ public class CharCreationScreen extends MenuScreen {
     public static final MenuScreen RACE_SELECTION = new RaceSelection(CHAR_CREATION);
     public static final MenuScreen CLASS_SELECTION = new ClassSelection(RACE_SELECTION);
     public static final MenuScreen ABILITIES = new ScoreGenSelection(CLASS_SELECTION);
-    public static final MenuScreen DESCRIPTION = null;
-    public static final MenuScreen EQUIPMENT = null;
+    public static final MenuScreen DESCRIPTION = new BackgroundSelection(ABILITIES);
+    public static final MenuScreen EQUIPMENT = new EquipmentSelection(DESCRIPTION);
     public static Screen[] tabList = new Screen[]{CHAR_CREATION, RACE_SELECTION, CLASS_SELECTION, ABILITIES, DESCRIPTION, EQUIPMENT};
     protected CharCreationScreen(Text title, Screen parent) {
         super(title, parent);

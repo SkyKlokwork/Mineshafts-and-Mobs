@@ -9,6 +9,7 @@ import net.minecraft.text.Text;
 import net.mineshafts.mnm.enums.charcreationenums.StatType;
 import net.mineshafts.mnm.gui.CharCreationScreen;
 import net.mineshafts.mnm.gui.widgets.MutableGridWidget;
+import net.mineshafts.mnm.playerdata.PlayerAbilityScores;
 
 import java.util.Arrays;
 
@@ -24,6 +25,8 @@ public class StatSelectionScreen extends CharCreationScreen {
     protected TextWidget[] textRow2 = new TextWidget[0];
     protected TextWidget[] textRow3 = new TextWidget[0];
     protected int[] asi = new int[6];
+    protected int[] results = new int[6];
+    protected boolean[] resultsFilled = new boolean[6];
     protected int displayY = 0;
     public void setScores(int[] scores){
         this.standardArray = scores;
@@ -104,7 +107,9 @@ public class StatSelectionScreen extends CharCreationScreen {
 
         if(l == textRow1.length & l == textRow2.length) {
             int total = newValue + asi[index];
-            String sign = "Error";
+            String sign;
+            results[index] = total;
+            resultsFilled[index] = true;
             for (int i=0;i<3;i++)
                 newAdder.add(new TextWidget(Text.translatable(StatType.values()[i].getTranslationKey()),this.textRenderer));
             for (int i=0;i<3;i++){
@@ -187,5 +192,11 @@ public class StatSelectionScreen extends CharCreationScreen {
             newArray[i] = standardArray[standardArray.length-i-1];
         }
         standardArray = newArray;
+    }
+    protected void setScores(){
+        for (boolean isFilled: resultsFilled)
+            if (isFilled)
+                return;
+        PlayerAbilityScores.setScores(results);
     }
 }

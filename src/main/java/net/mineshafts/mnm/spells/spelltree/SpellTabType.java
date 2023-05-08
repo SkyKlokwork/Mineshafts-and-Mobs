@@ -1,0 +1,106 @@
+package net.mineshafts.mnm.spells.spelltree;
+
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.client.gui.DrawableHelper;
+import net.minecraft.client.render.item.ItemRenderer;
+import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.item.ItemStack;
+
+@Environment(value= EnvType.CLIENT)
+enum SpellTabType {
+    ABOVE(0, 0, 28, 32, 8),
+    BELOW(84, 0, 28, 32, 8),
+    LEFT(0, 64, 32, 28, 5),
+    RIGHT(96, 64, 32, 28, 5);
+
+    private final int u;
+    private final int v;
+    private final int width;
+    private final int height;
+    private final int tabCount;
+
+    private SpellTabType(int u, int v, int width, int height, int tabCount) {
+        this.u = u;
+        this.v = v;
+        this.width = width;
+        this.height = height;
+        this.tabCount = tabCount;
+    }
+
+    public int getTabCount() {
+        return this.tabCount;
+    }
+
+    public void drawBackground(MatrixStack matrices, DrawableHelper tab, int x, int y, boolean selected, int index) {
+        int i = this.u;
+        if (index > 0) {
+            i += this.width;
+        }
+        if (index == this.tabCount - 1) {
+            i += this.width;
+        }
+        int j = selected ? this.v + this.height : this.v;
+        tab.drawTexture(matrices, x + this.getTabX(index), y + this.getTabY(index), i, j, this.width, this.height);
+    }
+
+    public void drawIcon(int x, int y, int index, ItemRenderer itemRenderer, ItemStack icon) {
+        int i = x + this.getTabX(index);
+        int j = y + this.getTabY(index);
+        switch (this) {
+            case ABOVE -> {
+                i += 6;
+                j += 9;
+            }
+            case BELOW -> {
+                i += 6;
+                j += 6;
+            }
+            case LEFT -> {
+                i += 10;
+                j += 5;
+            }
+            case RIGHT -> {
+                i += 6;
+                j += 5;
+            }
+        }
+        itemRenderer.renderInGui(icon, i, j);
+    }
+
+    public int getTabX(int index) {
+        switch (this) {
+            case ABOVE, BELOW -> {
+                return (this.width + 4) * index;
+            }
+            case LEFT -> {
+                return -this.width + 4;
+            }
+            case RIGHT -> {
+                return 248;
+            }
+        }
+        throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+    }
+
+    public int getTabY(int index) {
+        switch (this) {
+            case ABOVE -> {
+                return -this.height + 4;
+            }
+            case BELOW -> {
+                return 136;
+            }
+            case LEFT, RIGHT -> {
+                return this.height * index;
+            }
+        }
+        throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+    }
+
+    public boolean isClickOnTab(int screenX, int screenY, int index, double mouseX, double mouseY) {
+        int i = screenX + this.getTabX(index);
+        int j = screenY + this.getTabY(index);
+        return mouseX > (double)i && mouseX < (double)(i + this.width) && mouseY > (double)j && mouseY < (double)(j + this.height);
+    }
+}

@@ -3,22 +3,33 @@ package net.mineshafts.mnm.enums.charcreationenums;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
+import net.mineshafts.mnm.ItemChoice;
+import net.mineshafts.mnm.StartingGold;
 import net.mineshafts.mnm.gui.ManageScreen;
 import net.mineshafts.mnm.gui.statgenscreens.ScoreGenSelection;
 import net.mineshafts.mnm.playerdata.PlayerClass;
 import net.mineshafts.mnm.playerdata.Proficiencies;
 
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.function.Consumer;
 
+import static net.mineshafts.mnm.enums.StandardEquipment.*;
 import static net.mineshafts.mnm.gui.CharCreationScreen.*;
 
 @Environment(value= EnvType.CLIENT)
 public enum ClassEnum implements CharacterCreationEnum {
-    // id, key, hitDie, Array of proficiencies (armor, weapons, tools, saving throws, skills)<leave last n null for n choices>
+    // id, key, hitDie, Array of proficiencies (armor, weapons, tools, saving throws, skills)<leave last n null for n choices>, starting gold [I,J,K]->(<I>d<J> * <K>gp), Array of ItemChoices
     BARBARIAN(0, "barbarian", 12,
-            new CharStatEnum[]{StatType.STRENGTH, StatType.CONSTITUTION,ArmorType.LIGHT,ArmorType.MEDIUM,ArmorType.SHIELD,WeaponCategory.SIMPLE,WeaponCategory.MARTIAL,null,null}){
+            new CharStatEnum[]{StatType.STRENGTH, StatType.CONSTITUTION,ArmorType.LIGHT,ArmorType.MEDIUM,ArmorType.SHIELD,WeaponCategory.SIMPLE,WeaponCategory.MARTIAL,null,null},
+            new StartingGold(2,4,10),
+            new ItemChoice[][]{
+                    {new ItemChoice("a greataxe",GREATAXE.getStack(1)),new ItemChoice("any martial melee weapon",MARTIAL_MELEE)},
+                    {new ItemChoice("two handaxes",HANDAXE.getStack(2)),new ItemChoice("any simple weapon",SIMPLE)},
+                    {new ItemChoice("an explorer's pack",EXPLORERS_PACK.getStack(1))},{new ItemChoice("four javelins",JAVELIN.getStack(4))}
+            }){
         @Override
         public CharStatEnum[][] getOptionsLists() {
             CharStatEnum[] list = new CharStatEnum[]{SkillsEnum.ANIMAL_HANDLING, SkillsEnum.ATHLETICS, SkillsEnum.INTIMIDATION, SkillsEnum.NATURE, SkillsEnum.PERCEPTION, SkillsEnum.SURVIVAL};
@@ -38,7 +49,7 @@ public enum ClassEnum implements CharacterCreationEnum {
         }
 
         @Override
-        public void setResult(CharStatEnum Enum, int index) {
+        public void getResult(CharStatEnum Enum, int index) {
             proficiencies[proficiencies.length-2+index] = Enum;
         }
 
@@ -55,7 +66,7 @@ public enum ClassEnum implements CharacterCreationEnum {
         }
 
     },
-    BARD(1, "bard", 8,null){
+    BARD(1, "bard", 8,null,null,null){
 
         @Override
         public CharacterCreationEnum[][] getOptionsLists() {
@@ -75,7 +86,7 @@ public enum ClassEnum implements CharacterCreationEnum {
         }
 
         @Override
-        public void setResult(CharStatEnum Enum, int index) {
+        public void getResult(CharStatEnum Enum, int index) {
 
         }
 
@@ -95,17 +106,31 @@ public enum ClassEnum implements CharacterCreationEnum {
     private final String id;
     private final int hitDie;
     protected final CharStatEnum[] proficiencies;
+    private final StartingGold startingGold;
+    private final ItemChoice[][] startingEquipment;
 
-    ClassEnum(int classId, String id, int hitDie, CharStatEnum[] proficiencies) {
+    ClassEnum(int classId, String id, int hitDie, CharStatEnum[] proficiencies, StartingGold startingGold, ItemChoice[][] startingEquipment) {
         this.classId = classId;
         this.id = id;
         this.hitDie = hitDie;
         this.proficiencies = proficiencies;
+        this.startingGold = startingGold;
+        this.startingEquipment = startingEquipment;
+    }
+
+    public ItemChoice[][] getStartingEquipment(){
+        return startingEquipment;
+    }
+    public StartingGold getStartingGold(){
+        return startingGold;
     }
 
     @Override
     public Consumer<CharStatEnum[]> resultsSaver() {
-        return results->Proficiencies.addProficiencies(this.getProficiencies());
+        return results->{
+            PlayerClass.setClasses();
+            Proficiencies.addProficiencies(this.getProficiencies());
+        };
     }
     @Override
     public CharStatEnum[] getProficiencies() {
@@ -133,6 +158,16 @@ public enum ClassEnum implements CharacterCreationEnum {
     public static ClassEnum SgetEnum(int id) {
         for(ClassEnum classEnum: ClassEnum.values()){
             if(classEnum.classId==id)
+                return classEnum;
+        }
+        return null;
+    }
+    public ClassEnum getEnum(String name){
+        return SgetEnum(name);
+    }
+    public static ClassEnum SgetEnum(String name){
+        for(ClassEnum classEnum: ClassEnum.values()){
+            if(Objects.equals(classEnum.getTranslationKey(), name))
                 return classEnum;
         }
         return null;

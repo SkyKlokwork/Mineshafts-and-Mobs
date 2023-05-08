@@ -9,7 +9,7 @@ import net.mineshafts.mnm.gui.CharCreationScreen;
 
 public class ScoreGenSelection extends CharCreationScreen {
     public ScoreGenSelection(Screen parent) {
-        super(Text.translatable("mnm.menu.raceselection"), parent);
+        super(Text.translatable("mnm.menu.scoregenselection"), parent);
     }
     @Override
     public void init() {

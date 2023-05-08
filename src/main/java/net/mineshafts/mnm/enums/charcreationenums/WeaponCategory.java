@@ -22,6 +22,19 @@ public enum WeaponCategory implements CharStatEnum{
     public CharStatEnum getEnum(int id) {
         return null;
     }
+
+    @Override
+    public CharStatEnum getEnum(String name) {
+        return SgetEnum(name);
+    }
+    public static CharStatEnum SgetEnum(String name) {
+        for (WeaponCategory category: WeaponCategory.values()){
+            if(category.getTranslationKey().equals(name))
+                return category;
+        }
+        return null;
+    }
+
     public static CharStatEnum SgetEnum(int id){
         for (WeaponCategory category: WeaponCategory.values()){
             if(category.id==id)

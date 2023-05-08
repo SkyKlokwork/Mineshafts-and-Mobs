@@ -86,9 +86,10 @@ public class StandardArrayScreen extends StatSelectionScreen {
         nav.getMainPositioner().margin(4, 1, 4, 0);
         GridWidget.Adder navAdder = nav.createAdder(2);
         navAdder.add(backButton());
-        navAdder.add(screenChangeButton(Text.translatable("mnm.next"),()->DESCRIPTION));
+        navAdder.add(screenChangeButton(Text.translatable("mnm.next"),()->DESCRIPTION,()->setScores()));
         nav.recalculateDimensions();
         SimplePositioningWidget.setPos(nav, 0, this.height/10, this.width, this.height, 0.5f, 0.5f);
         this.addDrawableChild(nav);
     }
+
 }

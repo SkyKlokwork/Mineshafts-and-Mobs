@@ -14,13 +14,12 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class ManageScreen extends InfoScreen{
-    protected int level = 0;
+    protected int level;
     protected int[][] leveledAbilities;
     protected CharacterCreationEnum name;
     protected String[] leveledDescriptions;
     protected int index;
     protected CharStatEnum[][] optionsLists;
-    protected Consumer<CharacterCreationEnum>[] consumers;
     protected int[] buttonCounts;
     protected Supplier<Screen> nextScreen;
     protected Consumer<CharStatEnum[]> resultsSaver;
@@ -31,7 +30,7 @@ public class ManageScreen extends InfoScreen{
         this.level = 20;
         this.optionsLists = name.getOptionsLists();
         this.buttonCounts = name.getButtonCounts();
-        this.results = new CharacterCreationEnum[optionsLists.length];
+        this.results = new CharStatEnum[optionsLists.length];
         this.type = type;
     }
     public ManageScreen(CharacterCreationEnum name, String type, int level, Screen parent){
@@ -70,7 +69,7 @@ public class ManageScreen extends InfoScreen{
             ButtonAdder buttonAdder = new ButtonAdder();
             for (int i = 0; i < optionsLists.length; i++) {
                 int I = i;
-                buttonAdder.addButton(buttons, i + 1, value -> name.setResult(value,I), optionsLists[i]);
+                buttonAdder.addButton(buttons, i + 1, value -> results[I] = value, optionsLists[i]);
             }
         } else {
             buttons = new ClickableWidget[2];

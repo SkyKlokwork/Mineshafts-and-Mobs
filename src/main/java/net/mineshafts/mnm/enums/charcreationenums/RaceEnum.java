@@ -4,15 +4,18 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
+import net.mineshafts.mnm.ItemChoice;
 import net.mineshafts.mnm.Lifespan;
 import net.mineshafts.mnm.Speed;
+import net.mineshafts.mnm.StartingGold;
 import net.mineshafts.mnm.enums.SizeEnum;
-import net.mineshafts.mnm.gui.ClassSelection;
+import net.mineshafts.mnm.enums.charcreationenums.subenums.DragonbornColor;
 import net.mineshafts.mnm.gui.ManageScreen;
 import net.mineshafts.mnm.playerdata.AbilityScoreIncrease;
 import net.mineshafts.mnm.playerdata.PlayerRace;
 
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 import static net.mineshafts.mnm.gui.CharCreationScreen.*;
@@ -43,7 +46,7 @@ public enum RaceEnum implements CharacterCreationEnum {
         }
 
         @Override
-        public void setResult(CharStatEnum Enum, int index) {
+        public void getResult(CharStatEnum Enum, int index) {
 
         }
         @Override
@@ -76,7 +79,7 @@ public enum RaceEnum implements CharacterCreationEnum {
         }
 
         @Override
-        public void setResult(CharStatEnum Enum, int index) {
+        public void getResult(CharStatEnum Enum, int index) {
 
         }
         @Override
@@ -134,6 +137,16 @@ public enum RaceEnum implements CharacterCreationEnum {
         }
         return null;
     }
+    public CharacterCreationEnum getEnum(String name){
+        return RaceEnum.SgetEnum(name);
+    }
+    public static CharacterCreationEnum SgetEnum(String name){
+        for (RaceEnum race: RaceEnum.values()){
+            if(Objects.equals(race.getTranslationKey(), name))
+                return race;
+        }
+        return null;
+    }
 
     public Screen infoScreen(Screen parent) {
         ManageScreen info = new ManageScreen(this,"info",parent);
@@ -146,6 +159,13 @@ public enum RaceEnum implements CharacterCreationEnum {
         manage.setNextScreen(()->CLASS_SELECTION);
         manage.setResultsSaver(this.resultsSaver());
         return manage;
+    }
+
+    public ItemChoice[][] getStartingEquipment(){
+        return null;
+    }
+    public StartingGold getStartingGold(){
+        return null;
     }
 
     public AbilityScoreIncrease getAsi() {

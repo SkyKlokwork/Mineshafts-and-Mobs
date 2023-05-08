@@ -19,6 +19,12 @@ public class ModItems {
 
     public static final Item GOLD_COIN = registerItem("gold_coin",
             new Item(new Item.Settings()), ModItemGroup.Mineshafts);
+    public static final Item PLAT_COIN = registerItem("platinum_coin",
+            new Item(new Item.Settings()), ModItemGroup.Mineshafts);
+    public static final Item SILVER_COIN = registerItem("silver_coin",
+            new Item(new Item.Settings()), ModItemGroup.Mineshafts);
+    public static final Item COPPER_COIN = registerItem("copper_coin",
+            new Item(new Item.Settings()), ModItemGroup.Mineshafts);
     public static final Item D20 = registerItem("d20",
             new DiceItem(new Item.Settings().maxCount(1), 20),ModItemGroup.Mineshafts);
 

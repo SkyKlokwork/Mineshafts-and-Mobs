@@ -1,5 +1,7 @@
 package net.mineshafts.mnm.enums.charcreationenums;
 
+import java.util.Objects;
+
 public enum SkillsEnum implements CharStatEnum {
     CHOOSE(-1,"choose.skill.barbarian",null),
     ACROBATICS(0,"acrobatics", StatType.DEXTERITY),
@@ -7,17 +9,18 @@ public enum SkillsEnum implements CharStatEnum {
     ARCANA(2,"arcana",StatType.INTELLIGENCE),
     ATHLETICS(3,"athletics",StatType.STRENGTH),
     DECEPTION(4,"deception",StatType.CHARISMA),
-    INTIMIDATION(5,"intimidation",StatType.CHARISMA),
-    INVESTIGATION(6,"investigation",StatType.INTELLIGENCE),
-    MEDICINE(7,"medicine",StatType.WISDOM),
-    NATURE(8,"nature",StatType.WISDOM),
-    PERCEPTION(9,"perception",StatType.WISDOM),
-    PERFORMANCE(10,"performance",StatType.CHARISMA),
-    PERSUASION(11,"persuasion",StatType.CHARISMA),
-    RELIGION(12,"religion",StatType.INTELLIGENCE),
-    SLEIGHT_OF_HAND(13,"sleight_of_hand",StatType.DEXTERITY),
-    STEALTH(14,"stealth",StatType.DEXTERITY),
-    SURVIVAL(15,"survival",StatType.WISDOM);
+    INSIGHT(5,"insight",StatType.WISDOM),
+    INTIMIDATION(6,"intimidation",StatType.CHARISMA),
+    INVESTIGATION(7,"investigation",StatType.INTELLIGENCE),
+    MEDICINE(8,"medicine",StatType.WISDOM),
+    NATURE(9,"nature",StatType.WISDOM),
+    PERCEPTION(10,"perception",StatType.WISDOM),
+    PERFORMANCE(11,"performance",StatType.CHARISMA),
+    PERSUASION(12,"persuasion",StatType.CHARISMA),
+    RELIGION(13,"religion",StatType.INTELLIGENCE),
+    SLEIGHT_OF_HAND(14,"sleight_of_hand",StatType.DEXTERITY),
+    STEALTH(15,"stealth",StatType.DEXTERITY),
+    SURVIVAL(16,"survival",StatType.WISDOM);
 
     private final int skillID;
     private final String id;
@@ -49,6 +52,19 @@ public enum SkillsEnum implements CharStatEnum {
     public CharStatEnum getEnum(int id) {
         return SgetEnum(id);
     }
+
+    @Override
+    public CharStatEnum getEnum(String name) {
+        return SgetEnum(name);
+    }
+    public static CharStatEnum SgetEnum(String name){
+        for (SkillsEnum skill: SkillsEnum.values()){
+            if (Objects.equals(skill.getTranslationKey(), name))
+                return skill;
+        }
+        return null;
+    }
+
     public static CharStatEnum SgetEnum(int id){
         for (SkillsEnum skill: SkillsEnum.values()){
             if (skill.skillID==id)

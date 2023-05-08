@@ -14,15 +14,15 @@ import org.lwjgl.glfw.GLFW;
 
 @Environment(value= EnvType.CLIENT)
 public class MnMKeybinding {
+    public static KeyBinding openASMenu = KeyBindingHelper.registerKeyBinding(
+            new KeyBinding("key.mnm.menu.abilityscores", InputUtil.Type.KEYSYM,
+                    GLFW.GLFW_KEY_M, "key.category.mnm"));
+    public static KeyBinding openSpellTree = KeyBindingHelper.registerKeyBinding(
+            new KeyBinding("key.mnm.menu.spelltree", InputUtil.Type.KEYSYM,
+                    GLFW.GLFW_KEY_O, "key.category.mnm"));
     public static void register() {
-        KeyBinding openASMenu = KeyBindingHelper.registerKeyBinding(
-                new KeyBinding("key.mnm.menu.abilityscores", InputUtil.Type.KEYSYM,
-                        GLFW.GLFW_KEY_M, "key.category.mnm"));
-
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (openASMenu.wasPressed()) {
-                // Send packet to server to request ability score
-                ClientPlayNetworking.send(ModMessages.STRENGTH_REQUEST, PacketByteBufs.create());
                 client.setScreen(new CharacterCreationMenu());
             }
         });
